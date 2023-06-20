@@ -359,5 +359,7 @@ const movies = [
   }
 ]
 
-console.log(users)
-console.log(movies)
+const filterMovies = (users, movies) => {
+  const userFilter = users;
+  const movieFilter = movies
+}
