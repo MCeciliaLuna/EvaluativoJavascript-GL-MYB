@@ -378,6 +378,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
       userId: movie.userId,
       movie: movie.title,
       rate: movie.rate,
+      watched: movie.watched
     };
   });
 
@@ -393,6 +394,21 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
     }
   })
   console.log(usersAndMovies)
+
+  let insertUserId = 3 ;
+
+  const userIdFilter = usersAndMovies.filter(user => user.userId === insertUserId)
+  console.log(userIdFilter)
+
+  let insertRate = 7.4 ;
+
+  const rateFilter = usersAndMovies.filter(rate => rate.rate === insertRate)
+  console.log(rateFilter)
+
+  let insertDate = '2022-04-01 09:40:48'
+
+  const dateFilter = usersAndMovies.filter(date => date.watched === insertDate)
+  console.log(dateFilter)
 };
 
 filterMovies({ users, movies });
