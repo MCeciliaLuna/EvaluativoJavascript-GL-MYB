@@ -364,7 +364,7 @@ const movies = [
 ];
 
 const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
-  const usersMap = users.map((user) => {
+  const usersData = users.map((user) => {
     return {
       id: user.id,
       username: user.username,
@@ -373,7 +373,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
       company: user.company.name,
     };
   });
-  const moviesMap = movies.map((movie) => {
+  const moviesData = movies.map((movie) => {
     return {
       userId: movie.userId,
       movie: movie.title,
@@ -382,7 +382,17 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
   });
 
   const usersAndMovies = []
-  
+
+  moviesData.forEach((userId) => {
+    const union = usersData.find((id) => {
+      return id[moviesData.userId] === userId[usersData.id]
+    })
+    
+    if(union) {
+      usersAndMovies.push(Object.assign({}, userId, union))
+    }
+  })
+  console.log(usersAndMovies)
 };
 
 filterMovies({ users, movies });
