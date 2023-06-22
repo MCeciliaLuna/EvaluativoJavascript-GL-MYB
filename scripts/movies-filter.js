@@ -363,7 +363,21 @@ const movies = [
   },
 ];
 
-const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
+let userId = 3 ;
+let rate = 7.4 ;
+
+const dateWatched = movies.map(date => {
+    return {
+      watched: date.watched,
+      image: date.image,
+      title: date.title
+    }})
+console.log(dateWatched)
+
+let fromDate = 2020
+let toDate = 2022
+
+const filterMovies = ({users, movies, userId, fromDate, toDate, rate}) => {
   const usersData = users.map((user) => {
     return {
       id: user.id,
@@ -395,20 +409,14 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate, rate }) => {
   })
   console.log(usersAndMovies)
 
-  let insertUserId = 3 ;
-
-  const userIdFilter = usersAndMovies.filter(user => user.userId === insertUserId)
+  const userIdFilter = usersAndMovies.filter(item => item.userId === userId)
   console.log(userIdFilter)
 
-  let insertRate = 7.4 ;
-
-  const rateFilter = usersAndMovies.filter(rate => rate.rate === insertRate)
+  const rateFilter = usersAndMovies.filter(item => item.rate === rate)
   console.log(rateFilter)
 
-  let insertDate = '2022-04-01 09:40:48'
-
-  const dateFilter = usersAndMovies.filter(date => date.watched === insertDate)
+  const dateFilter = usersAndMovies.filter(item => item.watched === date)
   console.log(dateFilter)
 };
 
-filterMovies({ users, movies });
+filterMovies({ users, movies, userId, fromDate, toDate, rate});
