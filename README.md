@@ -6,13 +6,13 @@ Este repositorio contiene el código perteneciente al _**evaluativo de conocimie
 
 En base a una **lista de usuarios y una lista de películas** vistas por dichos usuarios, realizar una función que permita **obtener un nuevo arreglo de objetos** en el cual cada objeto consta con el _nombre del usuario, su email, su dirección completa, su compañía, el título de la película vista y la calificación de la misma_. La función debe poseer un **filtro por fecha, por calificación y por id de usuario**. Si no se envía un userId , la función deberá _devolver todas las películas que cumplan las condiciones de los filtros_ de fecha y calificación para todos los usuarios existentes.
 
-#Nombre de función y parámetros necesarios:
+### Nombre de función y parámetros necesarios:
 
 ```http
 filterMovies ( { users, movies, userId, fromDate, toDate, rate } );
 ```
 
-#Cada objeto del arreglo debe tener la siguiente estructura:
+### Cada objeto del arreglo debe tener la siguiente estructura:
 
 ```http
 {
