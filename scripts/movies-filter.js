@@ -364,20 +364,13 @@ const movies = [
 ];
 
 let userId = 3 ;
-let rate = 7.4 ;
 
-const dateWatched = movies.map(date => {
-    return {
-      watched: date.watched,
-      image: date.image,
-      title: date.title
-    }})
-console.log(dateWatched)
+const rate = 5
 
-let fromDate = 2020
-let toDate = 2022
+let fromDate = "2020-04-18 15:47:33" // filtrar después de la cuarentena
+let toDate = "2020-04-18 15:47:33" // filtrar hasta la cuarentena
 
-const filterMovies = ({users, movies, userId, fromDate, toDate, rate}) => {
+const filterMovies = ({users, movies, userId, fromDate, toDate}) => {
   const usersData = users.map((user) => {
     return {
       id: user.id,
@@ -392,12 +385,11 @@ const filterMovies = ({users, movies, userId, fromDate, toDate, rate}) => {
       userId: movie.userId,
       movie: movie.title,
       rate: movie.rate,
-      watched: movie.watched
+      watched: movie.watched,
+      image: movie.image
     };
   });
-
   const usersAndMovies = []
-
   moviesData.forEach((userId) => {
     const union = usersData.find((id) => {
       return id[moviesData.userId] === userId[usersData.id]
@@ -407,16 +399,39 @@ const filterMovies = ({users, movies, userId, fromDate, toDate, rate}) => {
       usersAndMovies.push(Object.assign({}, userId, union))
     }
   })
-  console.log(usersAndMovies)
-
+  //console.log({"USERS AND MOVIES array": usersAndMovies})
+  
   const userIdFilter = usersAndMovies.filter(item => item.userId === userId)
-  console.log(userIdFilter)
+  console.log({"USERID filter": userIdFilter})
 
-  const rateFilter = usersAndMovies.filter(item => item.rate === rate)
-  console.log(rateFilter)
+  // const rateFilter = usersAndMovies.filter(item => {
+  //   if (item.rate <= rate) {
+  //     return movies
+  //   }
+  // })
+  // //console.log({"RATE filter":rateFilter})
+  
+  // const fromDateFilter = usersAndMovies.filter(item => {
+  //   if (item.watched === fromDate) {
+  //     return {
+  //       watched: item.watched,
+  //       image: item.image,
+  //       title: item.title
+  //     }
+  //   }
+  // })
+  // //console.log({"FROMDATE filter": fromDateFilter})
 
-  const dateFilter = usersAndMovies.filter(item => item.watched === date)
-  console.log(dateFilter)
+  // const toDateFilter = usersAndMovies.filter(item => {
+  //   if (item.watched === toDate) {
+  //     return {
+  //       watched: item.watched,
+  //       image: item.image,
+  //       title: item.title
+  //     }
+  //   }
+  // })
+  // //console.log({"TODATE filter":toDateFilter})
 };
 
 filterMovies({ users, movies, userId, fromDate, toDate, rate});
