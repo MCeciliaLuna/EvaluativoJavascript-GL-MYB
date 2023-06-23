@@ -1,5 +1,371 @@
-*{
-  margin: 0;
+:root {
+  --logo-color: #9a0101;
+  --secondary-color: #650a0b;
+  --text-color: #ffffff;
+}
+
+@font-face {
+  font-family: "Delicious Handrawn", cursive;
+  src: url(https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap);
+}
+
+@font-face {
+  font-family: "Nunito", sans-serif;
+  src: url(https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap);
+}
+
+* {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-image: url(/assets/images/background.webp);
+  backdrop-filter: brightness(60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+a {
+  font-family: "Delicious Handrawn", cursive;
+}
+
+h4,
+h5,
+h6,
+p {
+  font-family: "Nunito", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--logo-color);
+  height: 7svh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  height: 5.5svh;
+  padding-left: 0.5em;
+}
+
+nav {
+  padding-right: 0.5em;
+}
+
+header a {
+  padding-right: 0.5em;
+  font-size: 1.5rem;
+}
+
+#name-section {
+  height: 73svh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 1em 0 1em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+}
+
+#name-section img {
+  border-radius: 100%;
+  width: 22svw;
+}
+
+#name-section div {
+  display: table-column;
+}
+
+#name-section h3 {
+  font-size: 2.5rem;
+}
+
+#name-section h1 {
+  font-size: 6rem;
+}
+
+#icons-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url(/assets/images/pattern-background.png);
+  background-repeat: repeat;
+  background-size: 200px;
+  height: 20svh;
+}
+
+#icons-section h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#icons-section img {
+  height: 12svh;
+  border-radius: 25%;
+}
+
+#descriptions-section {
+  background-image: url(/assets/images/background-2.webp);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+  padding: 4em 0;
+  display: flex;
+  justify-content: center;
+}
+
+article {
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+article div {
+  display: flex;
+  flex-direction: column;
+}
+
+article h3 {
+  padding: 0 0.3em;
+  font-size: 2rem;
+}
+
+article p {
+  padding: 0 0.5em;
+}
+
+article img {
+  padding: 0 0.1em;
+  height: 15svh;
+}
+
+#enjoy-article {
+  flex-direction: row-reverse;
+  text-align: end;
+}
+
+#text-right-article {
+  text-align: end;
+}
+
+#contact-section {
+  padding: 2em 0;
+  background-image: url(/assets/images/pattern-background.png);
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-section h3 {
+  text-align: center;
+  padding-bottom: 0.5em;
+  font-size: 2.5rem;
+}
+
+#contact-section section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-bottom: 1em;
+}
+
+#contact-section a {
+  width: 6svw;
+}
+
+iframe {
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+  width: 60svw;
+  height: 30svh;
+}
+
+footer {
+  background-color: var(--secondary-color);
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+footer p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  font-family: "Nunito";
+}
+
+footer img {
+  width: 1.5rem;
+}
+
+@media (width <= 767px) {
+  body {
+    background-image: url(/assets/images/phone-background.webp);
+    background-position: center;
+  }
+
+  header img {
+    height: 5.5svh;
+  }
+
+  header a {
+    font-size: 1.3rem;
+  }
+
+  #name-section {
+    height: 70svh;
+  }
+
+  #name-section img {
+    width: 28svw;
+  }
+
+  #name-section h3 {
+    font-size: 1.6rem;
+  }
+
+  #name-section h1 {
+    font-size: 3.5rem;
+  }
+
+  #icons-section {
+    justify-content: space-around;
+    height: 24svh;
+  }
+
+  #icons-section h3 {
+    font-size: 1.6rem;
+  }
+
+  #icons-section img {
+    height: 13.5svh;
+  }
+
+  #descriptions-section {
+    background-image: url(/assets/images/phone-background-2.webp);
+    flex-direction: column;
+  }
+
+  article h3 {
+    font-size: 2rem;
+  }
+
+  article img {
+    padding: 0 0.5em;
+  }
+
+  #enjoy-article {
+    flex-direction: row;
+    text-align: start;
+  }
+
+  #contact-section h3 {
+    font-size: 2.2rem;
+  }
+
+  #contact-section a {
+    width: 12svw;
+  }
+
+  iframe {
+    width: 70svw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background-image: url(/assets/images/phone-background.webp);
+    background-position: center;
+  }
+
+  header img {
+    height: 5.4svh;
+  }
+
+  header a {
+    font-size: 1.7rem;
+  }
+
+  #name-section {
+    height: 70svh;
+  }
+
+  #name-section h3 {
+    font-size: 2.5rem;
+  }
+
+  #name-section h1 {
+    font-size: 5.5rem;
+  }
+
+  #icons-section {
+    justify-content: space-around;
+    height: 24svh;
+  }
+
+  #icons-section h3 {
+    font-size: 2.2rem;
+  }
+
+  #icons-section img {
+    height: 14svh;
+  }
+
+  #descriptions-section {
+    background-image: url(/assets/images/phone-background-2.webp);
+    flex-direction: column;
+  }
+
+  article h3 {
+    font-size: 2.5rem;
+  }
+
+  article p {
+    font-size: 1.3rem;
+  }
+
+  article img {
+    padding: 0 0.5em;
+  }
+
+  #enjoy-article {
+    flex-direction: row;
+    text-align: start;
+  }
+
+  #contact-section h3 {
+    font-size: 2.8rem;
+  }
+
+  #contact-section a {
+    width: 8svw;
+  }
+
+  iframe {
+    width: 70svw;
+    height: 30svh;
+  }
 }
