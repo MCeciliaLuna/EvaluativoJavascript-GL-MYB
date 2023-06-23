@@ -37,7 +37,7 @@ Este proyecto se encuentra deployado en:
 
 ## ¿Alguna duda o sugerencia? ❓
 
-Por dudas o sugerencias, contactarse a lunama.cecilia@mail.com
+Por dudas o sugerencias, contactarse a lunama.cecilia@gmail.com
 
 ## Autora 🖌️
 
