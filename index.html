@@ -85,15 +85,15 @@
       <section id="usersandmovies-section">
         <h3>What are our friends watching?</h3>
         <form>
-          <input type="number" placeholder="userID" min="1" max="10">
+          <input type="number" placeholder="userID" min="1" max="10" id="input-userid">
           <div id="select-date">
-          <select>
+          <select id="select-fromdate">
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
           </select>
           <p>hasta</p>
-          <select>
+          <select id="select-todate">
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -101,8 +101,7 @@
         </div>
         <div id="select-rate">
           <label>rate:</label>
-        <select>
-          <option value="0">0</option>
+        <select id="rate-select">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -112,7 +111,6 @@
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
-          <option value="10">10</option>
         </select>
       </div>
         </form>
