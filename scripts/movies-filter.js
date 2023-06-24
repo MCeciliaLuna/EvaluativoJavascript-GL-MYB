@@ -369,6 +369,7 @@ let toDate = document.getElementById("select-todate");
 const rate = document.getElementById("rate-select");
 
 const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
+
   const usersData = users.map((user) => {
     return {
       id: user.id,
@@ -378,12 +379,13 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       company: user.company.name,
     };
   });
+  
   const moviesData = movies.map((movie) => {
     return {
       userId: movie.userId,
       movie: movie.title,
       rate: movie.rate,
-      watched: movie.watched
+      watched: movie.watched,
     };
   });
 
@@ -396,28 +398,28 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     let valueInput = parseInt(userId.value);
     const userIdFilter = usersAndMovies.filter(
       (item) => item.userId === valueInput
-    )
+    );
     updateResults("user-data", userIdFilter);
   });
 
   rate.addEventListener("change", () => {
-    const rateFilter = usersAndMovies.filter(item => {
+    const rateFilter = usersAndMovies.filter((item) => {
       if (rate.value === "10") {
         return item.rate >= 5 && item.rate <= 10;
       } else if (rate.value === "5") {
         return item.rate < 5;
       }
-        })
-        updateResults("user-data", rateFilter)
-      });
+    });
+    updateResults("user-data", rateFilter);
+  });
 
-      let combinedFilterArray = [];
+  let combinedFilterArray = [];
 
   fromDate.addEventListener("change", () => {
     let valueSelectFromDate = fromDate.value;
     const fromDateFilter = usersAndMovies.filter((item) => {
       if (item.watched.includes(valueSelectFromDate)) {
-        return usersAndMovies
+        return usersAndMovies;
       }
     });
     combinedFilterArray = fromDateFilter;
@@ -432,10 +434,9 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
           watched: item.watched,
           image: item.image,
           title: item.title,
-        }
+        };
       }
-      }
-    );
+    });
     combinedFilterArray = combinedFilterArray.concat(toDateFilter);
     updateResults("user-data", combinedFilterArray);
   });
@@ -446,9 +447,6 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
 
     for (let i = 0; i < results.length; i++) {
       const item = results[i];
-
-      const userContainer = document.createElement("div");
-      userContainer.className = "user-data";
 
       const userIdElement = document.createElement("p");
       userIdElement.className = "p-style";
@@ -470,11 +468,11 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       movieElement.innerHTML = `🍿 ${item.movie}`;
 
       const watchedElement = document.createElement("p");
-      const shortenedString = item.watched.slice(0, 7)
-      movieElement.innerHTML = `👀 ${shortenedString}`;
+      const shortString = item.watched.slice(0, 7);
+      movieElement.innerHTML = `👀 ${shortString}`;
 
       const rateElement = document.createElement("h4");
-      rateElement.innerHTML = `⭐ <strong>${item.rate}</strong> <br/>`;
+      rateElement.innerHTML = `⭐ <strong>${item.rate}</strong>`;
 
       userElement.appendChild(userIdElement);
       userElement.appendChild(usernameElement);
@@ -485,7 +483,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       userElement.appendChild(watchedElement);
       userElement.appendChild(rateElement);
     }
-  }
+  };
 };
 
 filterMovies({ users, movies, userId, fromDate, toDate, rate });
