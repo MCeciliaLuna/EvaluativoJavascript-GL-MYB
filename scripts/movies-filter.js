@@ -363,14 +363,14 @@ const movies = [
   },
 ];
 
-let userId = 3 ;
+let userId = 3;
 
-const rate = 5
+const rate = 5;
 
-let fromDate = "2020-04-18 15:47:33" // filtrar después de la cuarentena
-let toDate = "2020-04-18 15:47:33" // filtrar hasta la cuarentena
+let fromDate = "2020-04-18 15:47:33"; // filtrar después de la cuarentena
+let toDate = "2020-04-18 15:47:33"; // filtrar hasta la cuarentena
 
-const filterMovies = ({users, movies, userId, fromDate, toDate}) => {
+const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
   const usersData = users.map((user) => {
     return {
       id: user.id,
@@ -386,23 +386,23 @@ const filterMovies = ({users, movies, userId, fromDate, toDate}) => {
       movie: movie.title,
       rate: movie.rate,
       watched: movie.watched,
-      image: movie.image
+      image: movie.image,
     };
   });
-  const usersAndMovies = []
+  const usersAndMovies = [];
   moviesData.forEach((userId) => {
     const union = usersData.find((id) => {
-      return id[moviesData.userId] === userId[usersData.id]
-    })
-    
-    if(union) {
-      usersAndMovies.push(Object.assign({}, userId, union))
+      return id[moviesData.userId] === userId[usersData.id];
+    });
+
+    if (union) {
+      usersAndMovies.push(Object.assign({}, userId, union));
     }
-  })
+  });
   //console.log({"USERS AND MOVIES array": usersAndMovies})
-  
-  const userIdFilter = usersAndMovies.filter(item => item.userId === userId)
-  console.log({"USERID filter": userIdFilter})
+
+  const userIdFilter = usersAndMovies.filter((item) => item.userId === userId);
+  console.log({ "USERID filter": userIdFilter });
 
   // const rateFilter = usersAndMovies.filter(item => {
   //   if (item.rate <= rate) {
@@ -410,7 +410,7 @@ const filterMovies = ({users, movies, userId, fromDate, toDate}) => {
   //   }
   // })
   // //console.log({"RATE filter":rateFilter})
-  
+
   // const fromDateFilter = usersAndMovies.filter(item => {
   //   if (item.watched === fromDate) {
   //     return {
@@ -434,4 +434,4 @@ const filterMovies = ({users, movies, userId, fromDate, toDate}) => {
   // //console.log({"TODATE filter":toDateFilter})
 };
 
-filterMovies({ users, movies, userId, fromDate, toDate, rate});
+filterMovies({ users, movies, userId, fromDate, toDate, rate });

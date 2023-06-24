@@ -40,7 +40,9 @@ a {
 h4,
 h5,
 h6,
-p {
+p,
+label,
+li {
   font-family: "Nunito", sans-serif;
 }
 
@@ -168,42 +170,94 @@ article img {
   text-align: end;
 }
 
-#contact-section {
+#usersandmovies-section {
   padding: 2em 0;
   background-image: url(/assets/images/pattern-background.png);
   display: flex;
   flex-direction: column;
 }
 
-#contact-section h3 {
+#usersandmovies-section h3 {
   text-align: center;
   padding-bottom: 0.5em;
   font-size: 2.5rem;
 }
 
-#contact-section section {
+form {
+  width: 50svw;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
   padding-bottom: 1em;
 }
 
-#contact-section a {
-  width: 6svw;
+form input {
+  width: 10svw;
+  text-align: center;
+  padding: 0.5em;
 }
 
-iframe {
-  border-radius: 5px;
+form select {
+  padding: 0.5em;
+}
+
+form #select-date {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+form p {
+  margin: 0 0.5em;
+}
+
+label {
+  padding-right: 0.5em;
+}
+
+form #select-rate {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+form select {
+  width: auto;
   margin: 0 auto;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
-  width: 60svw;
-  height: 30svh;
+}
+
+#users-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#user {
+  margin: 0 auto;
+  padding: 0em 1em 0em 1em;
+  text-align: center;
+  border: #ffffff 1px solid;
+  border-top: none;
+  border-bottom: none;
 }
 
 footer {
   background-color: var(--secondary-color);
   text-align: center;
   padding: 1.5em 0;
+}
+
+footer div {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-bottom: 1em;
+}
+
+footer #icons-social {
+  width: 2svw;
 }
 
 footer p {
@@ -282,16 +336,25 @@ footer img {
     text-align: start;
   }
 
-  #contact-section h3 {
+  #usersandmovies-section h3 {
     font-size: 2.2rem;
   }
 
-  #contact-section a {
-    width: 12svw;
+  form {
+    width: 95svw;
+    justify-content: space-around;
   }
 
-  iframe {
-    width: 70svw;
+  form input {
+    width: 15svw;
+  }
+
+  #users-data p {
+    font-size: 1.1rem;
+  }
+
+  footer #icons-social {
+    width: 6svw;
   }
 }
 
@@ -356,16 +419,24 @@ footer img {
     text-align: start;
   }
 
-  #contact-section h3 {
+  #usersandmovies-section h3 {
     font-size: 2.8rem;
   }
 
-  #contact-section a {
-    width: 8svw;
+  form {
+    width: 60svw;
+    justify-content: space-between;
   }
 
-  iframe {
-    width: 70svw;
-    height: 30svh;
+  form input {
+    width: 15svw;
+  }
+
+  #users-data p {
+    font-size: 1.1rem;
+  }
+
+  footer #icons-social {
+    width: 4svw;
   }
 }
