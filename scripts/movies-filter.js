@@ -399,9 +399,8 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     let valueInput = parseInt(userId.value);
     const userIdFilter = usersAndMovies.filter(
       (item) => item.userId === valueInput
-    );
+    )
     updateResults("user-data", userIdFilter);
-    // console.log({"USERID filter": userIdFilter})
   });
 
   rate.addEventListener("change", () => {
@@ -409,7 +408,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     const rateFilter = usersAndMovies.filter((item) => {
       const roundedRate = Math.round(item.rate);
       if (roundedRate == valueSelectRate) {
-        return movies;
+        return usersAndMovies;
       }
     });
     updateResults("user-data", rateFilter);
@@ -419,14 +418,10 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     let valueSelectFromDate = fromDate.value;
     const fromDateFilter = usersAndMovies.filter((item) => {
       if (item.watched.includes(valueSelectFromDate)) {
-        return {
-          watched: item.watched,
-          image: item.image,
-          title: item.title,
-        };
+        return usersAndMovies
       }
     });
-    console.log({ "FROMDATE filter": fromDateFilter });
+    updateResults("user-data", fromDateFilter);
   });
 
   toDate.addEventListener("change", () => {
@@ -437,10 +432,11 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
           watched: item.watched,
           image: item.image,
           title: item.title,
-        };
+        }
       }
-    });
-    console.log({ "TODATE filter": toDateFilter });
+      }
+    );
+    updateResults("user-data", toDateFilter);
   });
 
   function updateResults(elementId, results) {
@@ -470,7 +466,11 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       companyElement.textContent = `🏢 ${item.company}`;
 
       const movieElement = document.createElement("h3");
-      movieElement.innerHTML = `🍿${item.movie}`;
+      movieElement.innerHTML = `🍿 ${item.movie}`;
+
+      const watchedElement = document.createElement("p");
+      const shortenedString = item.watched.slice(0, 7)
+      movieElement.innerHTML = `👀 ${shortenedString}`;
 
       const rateElement = document.createElement("h4");
       rateElement.innerHTML = `⭐ <strong>${item.rate}</strong> <br/>`;
@@ -481,6 +481,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       userElement.appendChild(addressElement);
       userElement.appendChild(companyElement);
       userElement.appendChild(movieElement);
+      userElement.appendChild(watchedElement);
       userElement.appendChild(rateElement);
     }
   }
