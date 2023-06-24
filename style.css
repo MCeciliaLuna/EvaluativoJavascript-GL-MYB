@@ -234,13 +234,28 @@ form select {
   justify-content: space-around;
 }
 
-#user {
+#user-data {
   margin: 0 auto;
   padding: 0em 1em 0em 1em;
   text-align: center;
   border: #ffffff 1px solid;
   border-top: none;
   border-bottom: none;
+  background-color: var(--logo-color);
+}
+
+.p-style {
+  padding-top: 1em;
+  font-size: 0.5em;
+}
+
+#user-data h3 {
+  font-size: 2rem;
+  padding-bottom: 0;
+}
+
+#user-data h4 {
+  font-size: 1.5rem;
 }
 
 footer {
@@ -327,7 +342,7 @@ footer img {
     font-size: 2rem;
   }
 
-  article img{
+  article img {
     padding: 0 0.5em;
   }
 

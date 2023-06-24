@@ -388,24 +388,20 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     };
   });
 
-  const usersAndMovies = [];
-
-  moviesData.forEach((userId) => {
-    const union = usersData.find((id) => {
-      return id[moviesData.userId] === userId[usersData.id];
-    });
-
-    if (union) {
-      usersAndMovies.push(Object.assign({}, userId, union));
-    }
+  const usersAndMovies = moviesData.map((movie) => {
+    const user = usersData.find((user) => user.id === movie.userId);
+    return { ...movie, ...user };
   });
+
+  console.log(usersAndMovies);
 
   userId.addEventListener("input", () => {
     let valueInput = parseInt(userId.value);
     const userIdFilter = usersAndMovies.filter(
       (item) => item.userId === valueInput
     );
-    console.log({ "USERID filter": userIdFilter });
+    updateResults("user-data", userIdFilter);
+    // console.log({"USERID filter": userIdFilter})
   });
 
   rate.addEventListener("change", () => {
@@ -416,7 +412,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
         return movies;
       }
     });
-    console.log({ "RATE filter": rateFilter });
+    updateResults("user-data", rateFilter);
   });
 
   fromDate.addEventListener("change", () => {
@@ -446,5 +442,48 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     });
     console.log({ "TODATE filter": toDateFilter });
   });
+
+  function updateResults(elementId, results) {
+    const userElement = document.getElementById(elementId);
+    userElement.innerHTML = "";
+
+    for (let i = 0; i < results.length; i++) {
+      const item = results[i];
+
+      const userContainer = document.createElement("div");
+      userContainer.className = "user-data";
+
+      const userIdElement = document.createElement("p");
+      userIdElement.className = "p-style";
+      userIdElement.textContent = `${item.userId}`;
+
+      const usernameElement = document.createElement("h3");
+      usernameElement.innerHTML = `👤${item.username}`;
+
+      const emailElement = document.createElement("p");
+      emailElement.textContent = `📧 ${item.email}`;
+
+      const addressElement = document.createElement("p");
+      addressElement.textContent = `🌎 ${item.fullAddress}`;
+
+      const companyElement = document.createElement("p");
+      companyElement.textContent = `🏢 ${item.company}`;
+
+      const movieElement = document.createElement("h3");
+      movieElement.innerHTML = `🍿${item.movie}`;
+
+      const rateElement = document.createElement("h4");
+      rateElement.innerHTML = `⭐ <strong>${item.rate}</strong> <br/>`;
+
+      userElement.appendChild(userIdElement);
+      userElement.appendChild(usernameElement);
+      userElement.appendChild(emailElement);
+      userElement.appendChild(addressElement);
+      userElement.appendChild(companyElement);
+      userElement.appendChild(movieElement);
+      userElement.appendChild(rateElement);
+    }
+  }
 };
+
 filterMovies({ users, movies, userId, fromDate, toDate, rate });
