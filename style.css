@@ -209,6 +209,11 @@ form #select-date {
   align-items: center;
 }
 
+button{
+  padding: 0.5em;
+  margin-left: 0.2em;
+}
+
 form p {
   margin: 0 0.5em;
 }

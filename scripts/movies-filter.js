@@ -383,8 +383,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       userId: movie.userId,
       movie: movie.title,
       rate: movie.rate,
-      watched: movie.watched,
-      image: movie.image,
+      watched: movie.watched
     };
   });
 
@@ -392,8 +391,6 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     const user = usersData.find((user) => user.id === movie.userId);
     return { ...movie, ...user };
   });
-
-  console.log(usersAndMovies);
 
   userId.addEventListener("input", () => {
     let valueInput = parseInt(userId.value);
@@ -404,15 +401,17 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
   });
 
   rate.addEventListener("change", () => {
-    let valueSelectRate = parseInt(rate.value);
-    const rateFilter = usersAndMovies.filter((item) => {
-      const roundedRate = Math.round(item.rate);
-      if (roundedRate == valueSelectRate) {
-        return usersAndMovies;
+    const rateFilter = usersAndMovies.filter(item => {
+      if (rate.value === "10") {
+        return item.rate >= 5 && item.rate <= 10;
+      } else if (rate.value === "5") {
+        return item.rate < 5;
       }
-    });
-    updateResults("user-data", rateFilter);
-  });
+        })
+        updateResults("user-data", rateFilter)
+      });
+
+      let combinedFilterArray = [];
 
   fromDate.addEventListener("change", () => {
     let valueSelectFromDate = fromDate.value;
@@ -421,6 +420,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
         return usersAndMovies
       }
     });
+    combinedFilterArray = fromDateFilter;
     updateResults("user-data", fromDateFilter);
   });
 
@@ -436,10 +436,11 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       }
       }
     );
-    updateResults("user-data", toDateFilter);
+    combinedFilterArray = combinedFilterArray.concat(toDateFilter);
+    updateResults("user-data", combinedFilterArray);
   });
 
-  function updateResults(elementId, results) {
+  const updateResults = (elementId, results) => {
     const userElement = document.getElementById(elementId);
     userElement.innerHTML = "";
 
