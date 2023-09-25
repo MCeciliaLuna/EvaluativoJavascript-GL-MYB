@@ -391,7 +391,8 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
 
   const usersAndMovies = moviesData.map((movie) => {
     const user = usersData.find((user) => user.id === movie.userId);
-    return { ...movie, ...user };
+    new Array(...user)
+    console.log(user)
   });
 
   userId.addEventListener("input", () => {
@@ -400,6 +401,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       (item) => item.userId === valueInput
     );
     updateResults("user-data", userIdFilter);
+    console.log(userIdFilter);
   });
 
   rate.addEventListener("change", () => {
@@ -411,6 +413,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
       }
     });
     updateResults("user-data", rateFilter);
+    return rateFilter
   });
 
   let combinedFilterArray = [];
@@ -424,6 +427,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     });
     combinedFilterArray = fromDateFilter;
     updateResults("user-data", fromDateFilter);
+    return fromDateFilter
   });
 
   toDate.addEventListener("change", () => {
@@ -439,6 +443,7 @@ const filterMovies = ({ users, movies, userId, fromDate, toDate }) => {
     });
     combinedFilterArray = combinedFilterArray.concat(toDateFilter);
     updateResults("user-data", combinedFilterArray);
+    return combinedFilterArray
   });
 
   const updateResults = (elementId, results) => {
